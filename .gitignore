@@ -15,3 +15,6 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore Spring-1000 File.  It gets created with tables
+/spring-1000
