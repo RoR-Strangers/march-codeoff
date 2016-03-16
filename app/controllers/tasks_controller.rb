@@ -10,6 +10,8 @@ class TasksController < ApplicationController
   
   def create
     @task = Task.new(task_params)
+    #needs to be changed to get user that is logged in
+    @task.user = User.first
     if @task.save
       flash[:success] = "Task was successfully created"
       redirect_to tasks_path
