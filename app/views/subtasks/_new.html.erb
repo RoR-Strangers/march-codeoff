@@ -1,0 +1,5 @@
+<%= form_for @newsubtask do |f| %>
+  <%= f.text_field :name %>
+  <%= f.hidden_field :task_id, :value => task_id%>
+  <%= f.submit %>
+<% end %>
