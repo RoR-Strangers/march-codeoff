@@ -17,17 +17,44 @@
           </span>
           <span class="input-group-addon">
             <%= link_to 'expand', "#" + task.id.to_s, { "data-toggle" => "collapse", "data-parent" => "accordion", "role" => "button" } %>
+            
           </span>
         </div>
       </div>
     </div>
-    <div class = "row">
-      <div id="<%= task.id %>" class="panel-collapse collapse" role="tabpanel">
-        <div class="panel-body">
-          test
+  <% end %>
+  <div class = "row">
+    <div id="<%= task.id %>" class="panel-collapse collapse" role="tabpanel">
+      <div class="panel-body">
+        <% task.subtasks.each do |subtask| %>
+          <%= form_for subtask do |g| %>
+            <%= g.check_box :completion %>
+            <%= g.text_field :name %>
+            <%= g.submit %>
+            <%= link_to "Delete", subtask_path(subtask), method: :delete, 
+                                                         data: { confirm: 'Are you sure?' } %>
+        
+          <% end %>
+        <% end %>
+          
+      <%= render 'subtasks/new', task_id: task.id %>
+        
+         
+ 
+          
+          
         </div>
       </div>
     </div>
-  <% end %>
 <% end %>
-<%= link_to 'New Task', new_task_path %>
+<%= form_for @newtask do |h| %>
+  <%= h.text_field :name %>
+  <form method="post" action="/task/new" class="button_to">
+  <input value="New task" type="submit" />
+  </form>
+  
+
+<% end %>
+
+          
+          
