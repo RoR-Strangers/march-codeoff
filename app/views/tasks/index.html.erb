@@ -17,7 +17,6 @@
           </span>
           <span class="input-group-addon">
             <%= link_to 'expand', "#" + task.id.to_s, { "data-toggle" => "collapse", "data-parent" => "accordion", "role" => "button" } %>
-            
           </span>
         </div>
       </div>
@@ -33,27 +32,18 @@
             <%= g.submit %>
             <%= link_to "Delete", subtask_path(subtask), method: :delete, 
                                                          data: { confirm: 'Are you sure?' } %>
-        
           <% end %>
         <% end %>
-          
       <%= render 'subtasks/new', task_id: task.id %>
-        
-         
- 
-          
-          
-        </div>
       </div>
     </div>
+  </div>
 <% end %>
 <%= form_for @newtask do |h| %>
   <%= h.text_field :name %>
   <form method="post" action="/task/new" class="button_to">
   <input value="New task" type="submit" />
   </form>
-  
-
 <% end %>
 
           

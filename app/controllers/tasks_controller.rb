@@ -16,7 +16,6 @@ class TasksController < ApplicationController
     @task.user = User.first
     if @task.save
       flash[:success] = "Task was successfully created"
-      redirect_to tasks_path
     else
       render 'new'
     end

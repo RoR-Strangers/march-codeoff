@@ -1,17 +1,16 @@
 class SubtasksController < ApplicationController
   
-  def new
-  @subtask = Subtask.new
+  def error
+    @subtask = Subtask.new
   end
-  
+
   def create
     @subtask = Subtask.new(subtask_params)
     @subtask.completion = :false
     if @subtask.save
       flash[:success] = "subtask was successfully created"
-      redirect_to tasks_path
     else
-      render 'new'
+     render 'error'
     end
   end
   
@@ -35,6 +34,6 @@ class SubtasksController < ApplicationController
     params.require(:subtask).permit(:name, :completion, :task_id)
   end
   
-end
 
+end
   
