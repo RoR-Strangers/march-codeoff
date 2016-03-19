@@ -1,3 +1,5 @@
+
+
 <h1>Listing all Tasks</h1>  
 <% @tasks.each do |task| %>
   <%= form_for task do |f| %>
@@ -17,6 +19,8 @@
           </span>
           <span class="input-group-addon">
             <%= link_to 'expand', "#" + task.id.to_s, { "data-toggle" => "collapse", "data-parent" => "accordion", "role" => "button" } %>
+          </span>
+          <span>
           </span>
         </div>
       </div>

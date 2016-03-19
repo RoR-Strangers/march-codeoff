@@ -6,18 +6,15 @@ class TasksController < ApplicationController
    @newsubtask = Subtask.new
   end
   
-  def new
-  @task = Task.new
-  end
-  
   def create
     @task = Task.new(task_params)
     #needs to be changed to get user that is logged in
-    @task.user = User.first
+    #@task.user = User.first  commented out while users not working
     if @task.save
       flash[:success] = "Task was successfully created"
+      redirect_to tasks_path
     else
-      render 'new'
+      render 'error'
     end
   end
   
