@@ -1,0 +1,5 @@
+<%= simple_form_for @newtask do |h| %>
+  <%= h.text_field :name %>
+  <%= h.input :duedate, as: :bootstrap_datepicker%>
+  <%= h.submit %>
+<% end %>

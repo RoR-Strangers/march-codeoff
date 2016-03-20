@@ -18,6 +18,9 @@
           <span class="input-group-addon">
             <%= link_to 'expand', "#" + task.id.to_s, { "data-toggle" => "collapse", "data-parent" => "accordion", "role" => "button" } %>
           </span>
+          <span class="input-group-addon">
+            <%= f.text_field :duedate %>
+          </span>
         </div>
       </div>
     </div>
@@ -40,12 +43,6 @@
     </div>
   </div>
 <% end %>
-<%= form_for @newtask do |h| %>
-  <%= h.text_field :name %>
-  <form method="post" action="/task/new" class="button_to">
-  <input value="New task" type="submit" />
-  </form>
-<% end %>
-
+<%= render 'new'%>
           
           
