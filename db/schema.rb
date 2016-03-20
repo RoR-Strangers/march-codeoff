@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20160318070011) do
     t.boolean  "completion"
     t.integer  "task_id"
     t.datetime "created_at"
-    t.datetime "duedate"
+    t.date     "duedate"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20160318070011) do
     t.boolean  "completion"
     t.integer  "user_id"
     t.datetime "created_at"
-    t.datetime "duedate"
+    t.date     "duedate"
   end
 
   create_table "users", force: :cascade do |t|

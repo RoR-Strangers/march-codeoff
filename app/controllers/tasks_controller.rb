@@ -8,6 +8,7 @@ class TasksController < ApplicationController
   
   def create
     @task = Task.new(task_params)
+    @task.completion = :false
     #needs to be changed to get user that is logged in
     #@task.user = User.first  commented out while users not working
     if @task.save
@@ -35,7 +36,7 @@ class TasksController < ApplicationController
   
   private
   def task_params
-    params.require(:task).permit(:name, :completion)
+    params.require(:task).permit(:name, :completion, :duedate)
   end
   
 end

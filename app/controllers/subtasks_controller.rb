@@ -28,9 +28,8 @@ class SubtasksController < ApplicationController
   
   private
   def subtask_params
-    params.require(:subtask).permit(:name, :completion, :task_id)
+    params.require(:subtask).permit(:name, :completion, :task_id, :duedate)
   end
-  
 
 end
   
