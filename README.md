@@ -1,3 +1,9 @@
+Note to self:
+
+At lecture 111 creating login/logout function. 3/16
+
+
+
 
      ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
     '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'

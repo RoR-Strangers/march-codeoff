@@ -1,0 +1,30 @@
+<h1 align="center">Welcome to <%= @user.username %>'s page</h1>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4" align="center">
+    <%= gravatar_for @user, size: 150 %>
+  </div>
+</div>
+
+<h3>Listing all Tasks</h3>  
+<% @user_tasks.each do |task| %>
+  <%= form_for task do |f| %>
+    <div class="row">
+      <div class="col-xs-3">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <%= f.check_box :completion%>
+          </span>
+          <%= f.text_field :name, class: "form-control" %>
+          <span class="input-group-addon">
+            <%= f.submit %>
+          </span>
+          <span class="input-group-addon">
+            <%= link_to "Delete", task_path(task), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </span>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+<%= link_to 'New Task', new_task_path %>
+<%= link_to "Log Out", logout_path, method: :delete %>

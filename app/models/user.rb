@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-    has_many :tasks
+    has_many :tasks, dependent: :destroy
     before_save { self.email = email.downcase }
     validates :username, presence: true,
               uniqueness: { case_sensitive: false }, 
