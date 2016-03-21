@@ -2,20 +2,21 @@ class TasksController < ApplicationController
   
   def index
    @tasks = Task.all
-  end
-  
-  def new
-  @task = Task.new
+   @newtask = Task.new
+   @newsubtask = Subtask.new
   end
   
   def create
     @task = Task.new(task_params)
     @task.user = current_user
+    @task.completion = :false
+    #needs to be changed to get user that is logged in
+    #@task.user = User.first  commented out while users not working
     if @task.save
       flash[:success] = "Task was successfully created"
       redirect_to user_path(@task.user)
     else
-      render 'new'
+      render 'error'
     end
   end
   
@@ -36,7 +37,7 @@ class TasksController < ApplicationController
   
   private
   def task_params
-    params.require(:task).permit(:name, :completion)
+    params.require(:task).permit(:name, :completion, :duedate)
   end
   
 end
