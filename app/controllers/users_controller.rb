@@ -9,8 +9,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      session[:user_id] = @user.id
       flash[:success] = "Welcome to your task list #{@user.username}"
-      redirect_to tasks_path
+      redirect_to user_path(@user)
     else
       render 'new'
     end
@@ -20,7 +21,6 @@ class UsersController < ApplicationController
   end
   
   def update
-    
     if @user.update(user_params)
       flash[:succss] = "Your account was updated"
       redirect_to tasks_path
