@@ -1,11 +1,5 @@
 class TasksController < ApplicationController
   
-  def index
-   @tasks = Task.all
-   @newtask = Task.new
-   @newsubtask = Subtask.new
-  end
-  
   def create
     @task = Task.new(task_params)
     @task.user = current_user
@@ -24,7 +18,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     @task.destroy
     flash[:danger] = "Task was successfully deleted"
-    redirect_to tasks_path
+    redirect_to user_path(@task.user)
   end
   
   def update
@@ -32,7 +26,7 @@ class TasksController < ApplicationController
     if @task.update(task_params)
       flash[:success] = "Task was successfully updated"
     end
-    redirect_to tasks_path
+    redirect_to user_path(@task.user)
   end
   
   private

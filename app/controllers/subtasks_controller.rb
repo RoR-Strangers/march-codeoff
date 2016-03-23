@@ -5,7 +5,7 @@ class SubtasksController < ApplicationController
     @subtask.completion = :false
     if @subtask.save
       flash[:success] = "subtask was successfully created"
-      redirect_to tasks_path
+      redirect_to user_path(@subtask.task.user)
     else
       render 'error'
     end
@@ -15,7 +15,7 @@ class SubtasksController < ApplicationController
     @subtask = Subtask.find(params[:id])
     @subtask.destroy
     flash[:danger] = "subtask was successfully deleted"
-    redirect_to tasks_path
+    redirect_to user_path(@subtask.task.user)
   end
   
   def update
@@ -23,7 +23,7 @@ class SubtasksController < ApplicationController
     if @subtask.update(subtask_params)
       flash[:success] = "subtask was successfully updated"
     end
-    redirect_to tasks_path
+    redirect_to user_path(@subtask.task.user)
   end
   
   private

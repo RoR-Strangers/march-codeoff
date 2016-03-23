@@ -30,6 +30,8 @@ class UsersController < ApplicationController
   end
   
   def show
+    @newtask = Task.new #temporary as well
+    @newsubtask = Subtask.new #also temporary
     @user_tasks = @user.tasks
   end
   
