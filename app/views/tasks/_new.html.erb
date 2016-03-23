@@ -1,5 +1,42 @@
-<%= simple_form_for @newtask do |h| %>
-  <%= h.text_field :name %>
-  <%= h.input :duedate, as: :bootstrap_datepicker%>
-  <%= h.submit %>
-<% end %>
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" >
+  Create new task
+</button>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Create new task</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for @newtask do |f| %>
+        <%= f.label :task %>
+        <%= f.text_field :name %>
+        <%= f.input :duedate, as: :bootstrap_datepicker%>
+        <%= f.submit class: 'btn btn-primary' %>
+      <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

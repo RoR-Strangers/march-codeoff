@@ -1,48 +1,33 @@
 <h1>Listing all Tasks</h1>  
 <% @user_tasks.each do |task| %>
-  <%= form_for task do |f| %>  <!-- add :remote => true to have it update without refreshing page-->
-    <div class="row">
-      <div class="col-xs-5">
-        <div class="input-group">
-          <span class="input-group-addon">
-            <%= f.check_box :completion, :class => 'submittable' %>
-          </span>
-          <%= f.text_field :name, class: "form-control" %>
-          <span class="input-group-addon">
-            <%= f.submit %>
-          </span>
-          <span class="input-group-addon">
-            <%= link_to "Delete", task_path(task), method: :delete, 
-                                                   data: { confirm: 'Are you sure?' } %>
-          </span>
-          <span class="input-group-addon">
-            <%= link_to 'expand', "#" + task.id.to_s, { "data-toggle" => "collapse", "data-parent" => "accordion", "role" => "button" } %>
-          </span>
-          <span class="input-group-addon">
-            <%= f.text_field :duedate %>
-          </span>
-        </div>
-      </div>
-    </div>
-  <% end %>
-  <div class = "row">
-    <div id="<%= task.id %>" class="panel-collapse collapse" role="tabpanel">
-      <div class="panel-body">
-        <% task.subtasks.each do |subtask| %>
-          <%= form_for subtask do |g| %>
-            <%= g.check_box :completion, :class => 'submittable' %>
-            <%= g.text_field :name %>
-            <%= g.text_field :duedate %>
-            <%= g.submit %>
-            <%= link_to "Delete", subtask_path(subtask), method: :delete, 
-                                                         data: { confirm: 'Are you sure?' } %>
-          <% end %>
-        <% end %>
-      <%= render 'subtasks/new', task_id: task.id %>
+  <div class="row">
+    <div class="col-xs-5">
+      <div class="input-group">
+        <%= render 'shared/listing', task_object: task, object_path: task_path(task) %>
+        <span class="input-group-addon">
+        <%= link_to 'expand', "#" + task.id.to_s + "subtasks", { "data-toggle" => "collapse", "data-parent" => "accordion", "role" => "button" } %>
+        </span>
       </div>
     </div>
   </div>
+  
+  <div id="<%= task.id %>subtasks" class="panel-collapse collapse" role="tabpanel">
+     <% task.subtasks.each do |subtask| %>
+      <div class = "row">
+        <div class="col-xs-5">
+          <div class="input-group">
+            <%= render 'shared/listing', task_object: subtask, object_path: subtask_path(subtask) %>
+          </div>
+        </div>
+      </div>
+      <%= render 'shared/edit', edit_object: subtask%>
+    <% end %>
+    <%= render 'subtasks/new', task_id: task.id %>
+  </div>
+
+  <%= render 'shared/edit', edit_object: task%>
+          
 <% end %>
+
+
 <%= render 'tasks/new'%>
-          
-          

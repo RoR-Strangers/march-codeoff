@@ -1,0 +1,21 @@
+<span class="input-group-addon">
+  <%= form_for task_object do |f| %>  <!--add :remote => true to have it update without refreshing page-->
+  <%= f.check_box :completion, :class => 'submittable' %>
+  <% end %>
+</span>
+<span class="input-group-addon">
+  <%= task_object.name %>
+</span>
+<span class="input-group-addon">
+  <%= task_object.duedate %>
+</span>
+<span class="input-group-addon">
+  <%= link_to "Delete", object_path, method: :delete, 
+                                     data: { confirm: 'Are you sure?' } %>
+</span>
+<span class="input-group-addon">
+  <%= link_to 'edit', "#" + task_object.id.to_s + "edit", { "data-toggle" => "collapse", "data-parent" => "accordion", "role" => "button" } %>
+</span>
+
+
+

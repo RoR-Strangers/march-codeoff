@@ -1,6 +1,39 @@
-<%= simple_form_for @newsubtask do |f| %>
-  <%= f.text_field :name %>
-  <%= f.hidden_field :task_id, :value => task_id%>
-  <%= f.input :duedate, as: :bootstrap_datepicker%>
-  <%= f.submit %>
-<% end %>
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target=<%="#" + task_id.to_s%> >
+  Create new subtask
+</button>
+
+<div class="modal fade" id="<%= task_id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Create new subtask</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for @newsubtask do |f| %>
+          <%= f.label :Subtask %>
+          <%= f.text_field :name %>
+          <%= f.hidden_field :task_id, :value => task_id%>
+          <%= f.input :duedate, as: :bootstrap_datepicker%>
+          <%= f.submit class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
