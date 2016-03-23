@@ -1,11 +1,11 @@
 <h1>Listing all Tasks</h1>  
 <% @user_tasks.each do |task| %>
-  <%= form_for task do |f| %>
+  <%= form_for task do |f| %>  <!-- add :remote => true to have it update without refreshing page-->
     <div class="row">
       <div class="col-xs-5">
         <div class="input-group">
           <span class="input-group-addon">
-            <%= f.check_box :completion%>
+            <%= f.check_box :completion, :class => 'submittable' %>
           </span>
           <%= f.text_field :name, class: "form-control" %>
           <span class="input-group-addon">
@@ -30,7 +30,7 @@
       <div class="panel-body">
         <% task.subtasks.each do |subtask| %>
           <%= form_for subtask do |g| %>
-            <%= g.check_box :completion %>
+            <%= g.check_box :completion, :class => 'submittable' %>
             <%= g.text_field :name %>
             <%= g.text_field :duedate %>
             <%= g.submit %>
