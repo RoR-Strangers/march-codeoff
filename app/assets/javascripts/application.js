@@ -15,7 +15,6 @@
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
 //= require bootstrap-datepicker-rails
-//= require automatic-checkbox
 //= require turbolinks
 //= require_tree .
 

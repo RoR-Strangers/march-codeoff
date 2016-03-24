@@ -4,7 +4,7 @@
     <%= gravatar_for @user, size: 150 %>
   </div>
 </div>
-
-<%= render 'tasks/index' %>
-
+<div class="container">
+<%= render 'tasks/tabs_listing' %>
 <%= link_to "Log Out", logout_path, method: :delete %>
+</div>

@@ -1,33 +1,26 @@
-<h1>Listing all Tasks</h1>  
-<% @user_tasks.each do |task| %>
-  <div class="row">
-    <div class="col-xs-5">
-      <div class="input-group">
-        <%= render 'shared/listing', task_object: task, object_path: task_path(task) %>
-        <span class="input-group-addon">
-        <%= link_to 'expand', "#" + task.id.to_s + "subtasks", { "data-toggle" => "collapse", "data-parent" => "accordion", "role" => "button" } %>
-        </span>
-      </div>
+<div class="row">
+  <div class="col-xs-5">
+    <div class="input-group">
+      <%= render 'shared/listing', task_object: task, object_path: task_path(task) %>
+      <span class="input-group-addon">
+      <%= link_to 'expand', "#" + task.id.to_s + "subtasks", { "data-toggle" => "collapse", "data-parent" => "accordion", "role" => "button" } %>
+      </span>
     </div>
   </div>
-  
-  <div id="<%= task.id %>subtasks" class="panel-collapse collapse" role="tabpanel">
-     <% task.subtasks.each do |subtask| %>
-      <div class = "row">
-        <div class="col-xs-5">
-          <div class="input-group">
-            <%= render 'shared/listing', task_object: subtask, object_path: subtask_path(subtask) %>
-          </div>
+</div>
+
+<div id="<%= task.id %>subtasks" class="panel-collapse collapse" role="tabpanel">
+   <% task.subtasks.each do |subtask| %>
+    <div class = "row">
+      <div class="col-xs-5">
+        <div class="input-group">
+          <%= render 'shared/listing', task_object: subtask, object_path: subtask_path(subtask) %>
         </div>
       </div>
-      <%= render 'shared/edit', edit_object: subtask%>
-    <% end %>
-    <%= render 'subtasks/new', task_id: task.id %>
-  </div>
+    </div>
+    <%= render 'shared/edit', edit_object: subtask%>
+  <% end %>
+  <%= render 'subtasks/new', task_id: task.id %>
+</div>
 
-  <%= render 'shared/edit', edit_object: task%>
-          
-<% end %>
-
-
-<%= render 'tasks/new'%>
+<%= render 'shared/edit', edit_object: task%>
