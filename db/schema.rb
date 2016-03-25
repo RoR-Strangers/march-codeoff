@@ -11,9 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20160316114041) do
-=======
 ActiveRecord::Schema.define(version: 20160318070011) do
 
   create_table "subtasks", force: :cascade do |t|
@@ -23,7 +20,6 @@ ActiveRecord::Schema.define(version: 20160318070011) do
     t.datetime "created_at"
     t.date     "duedate"
   end
->>>>>>> 52ab2f500ad40a853c3b107d7fde2a710772279b
 
   create_table "tasks", force: :cascade do |t|
     t.string   "name"

@@ -3,6 +3,7 @@ class SubtasksController < ApplicationController
   def create
     @subtask = Subtask.new(subtask_params)
     @subtask.completion = :false
+    @subtask.duedate = @subtask.task.duedate
     if @subtask.save
       flash[:success] = "subtask was successfully created"
       redirect_to user_path(@subtask.task.user)

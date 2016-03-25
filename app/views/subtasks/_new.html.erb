@@ -14,7 +14,6 @@
           <%= f.label :Subtask %>
           <%= f.text_field :name %>
           <%= f.hidden_field :task_id, :value => task_id%>
-          <%= f.input :duedate, as: :bootstrap_datepicker%>
           <%= f.submit class: 'btn btn-primary' %>
         <% end %>
       </div>

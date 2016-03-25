@@ -15,7 +15,7 @@
   <div id="today" class="tab-pane fade in active">
     <% @user_tasks.each do |task| %>
       <% if !task.duedate.nil? %>
-        <% if (task.duedate - Date.today).to_i == 0 && !task.completion? %>
+        <% if (task.duedate - Time.zone.today).to_i == 0 && !task.completion? %>
           <%= render 'tasks/index', task: task, tab: "today"%>
         <% end %>
       <% end %>
@@ -25,7 +25,7 @@
   <div id="week" class="tab-pane fade">
     <% @user_tasks.each do |task| %>
       <% if !task.duedate.nil? %>
-        <% if (task.duedate - Date.today).to_i <= 7 && !task.completion? %>
+        <% if (task.duedate - Time.zone.today).to_i <= 7 && !task.completion? %>
           <%= render 'tasks/index', task: task, tab: "week"%>
         <% end %>
       <% end %>
@@ -51,7 +51,7 @@
   <div id="overdue" class="tab-pane fade">
     <% @user_tasks.each do |task| %>
       <% if !task.duedate.nil? %>
-        <% if (task.duedate - Date.today).to_i < 0 && !task.completion? %>
+        <% if (task.duedate - Time.zone.today).to_i < 0 && !task.completion? %>
           <%= render 'tasks/index', task: task, tab: "overdue"%>
         <% end %>
       <% end %>

@@ -5,6 +5,6 @@ $ ->
   # http://www.eyecon.ro/bootstrap-datepicker/#
      $('.datepicker-settings').datepicker({
        format: "yyyy-mm-dd",
-       startDate: "today",
+       todayBtn: "linked",
        autoclose: true
    });
