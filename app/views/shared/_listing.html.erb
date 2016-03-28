@@ -13,3 +13,6 @@
 <span class="input-group-addon">
   <%= link_to 'edit', "#" + task_object.id.to_s + "edit", { "data-toggle" => "collapse", "data-parent" => "accordion", "role" => "button" } %>
 </span>
+<span class="input-group-addon">
+  <%= Time.zone.today %>
+</span>

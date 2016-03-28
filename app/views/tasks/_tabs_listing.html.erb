@@ -25,7 +25,9 @@
   <div id="week" class="tab-pane fade">
     <% @user_tasks.each do |task| %>
       <% if !task.duedate.nil? %>
-        <% if (task.duedate - Time.zone.today).to_i <= 7 && !task.completion? %>
+        <% if (task.duedate - Time.zone.today).to_i <= 7 && 
+              (task.duedate - Time.zone.today).to_i >= 0 &&
+              !task.completion? %>
           <%= render 'tasks/index', task: task, tab: "week"%>
         <% end %>
       <% end %>
