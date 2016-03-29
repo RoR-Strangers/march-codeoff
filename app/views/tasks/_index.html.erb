@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-xs-5">
     <div class="input-group">
-      <%= render 'shared/listing', task_object: task, object_path: task_path(task) %>
+      <%= render 'shared/listing', task_object: task, object_path: task_path(task), tab: tab %>
       <span class="input-group-addon">
       <%= link_to 'expand', "#" + task.id.to_s + "subtasks" + tab, { "data-toggle" => "collapse", "data-parent" => "accordion", "role" => "button" } %>
       </span>
@@ -14,13 +14,13 @@
     <div class = "row">
       <div class="col-xs-5">
         <div class="input-group">
-          <%= render 'shared/listing', task_object: subtask, object_path: subtask_path(subtask) %>
+          <%= render 'shared/listing', task_object: subtask, object_path: subtask_path(subtask), tab: tab %>
         </div>
       </div>
     </div>
-    <%= render 'subtasks/edit', edit_object: subtask%>
+    <%= render 'subtasks/edit', edit_object: subtask, tab: tab%>
   <% end %>
-  <%= render 'subtasks/new', task_id: task.id %>
+  <%= render 'subtasks/new', task_id: task.id, tab: tab %>
 </div>
 
-<%= render 'tasks/edit', edit_object: task%>
+<%= render 'tasks/edit', edit_object: task, tab: tab%>

@@ -1,5 +1,5 @@
 <div class = "row">
-  <div id="<%= edit_object.id %>edit" class="panel-collapse collapse" role="tabpanel">
+  <div id=<%=edit_object.id.to_s + "edit" + tab%> class="panel-collapse collapse" role="tabpanel">
     <div class="panel-body">
       <%= simple_form_for edit_object do |f| %>  <!--add :remote => true to have it update without refreshing page-->
         <div class="row">
