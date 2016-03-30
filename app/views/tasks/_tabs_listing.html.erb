@@ -3,54 +3,91 @@
 <h2>Tasks Listing</h2>
 
 <ul class="nav nav-tabs">
-  <li class="active"><a href="#today">Due Today</a></li>
-  <li><a href="#week">Due This Week</a></li>
-  <li><a href="#all">All Due Tasks</a></li>
-  <li><a href="#completed">Completed Tasks</a></li>
+  <li class="active"><a href="#today">Today</a></li>
+  <li><a href="#week">This Week</a></li>
+  <li><a href="#all">All Tasks</a></li>
   <li><a href="#overdue">Overdue Tasks</a></li>
 </ul>
 
 <div class="tab-content">
   
-  <div id="today" class="tab-pane fade in active">
-    <% @user_tasks.each do |task| %>
-      <% if !task.duedate.nil? %>
-        <% if (task.duedate - Time.zone.today).to_i == 0 && !task.completion? %>
-          <%= render 'tasks/index', task: task, tab: "today"%>
+  <div id="today" class="tab-pane fade in active in active">
+    <div class="row">
+      <div class="col-xs-6">
+        <h2>Due</h2>
+        <% @user_tasks.each do |task| %>
+          <% if !task.duedate.nil? %>
+            <% if (task.duedate - Time.zone.today).to_i == 0 && !task.completion? %>
+              <%= render 'tasks/index', task: task, tab: "today"%>
+            <% end %>
+          <% end %>
         <% end %>
-      <% end %>
-    <% end %>
+      </div>
+      <div class="col-xs-6">
+        <h2>Completed</h2>
+        <% @user_tasks.each do |task| %>
+          <% if !task.duedate.nil? %>
+            <% if (task.duedate - Time.zone.today).to_i == 0 && task.completion? %>
+              <%= render 'tasks/index', task: task, tab: "today"%>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
   
   <div id="week" class="tab-pane fade">
-    <% @user_tasks.each do |task| %>
-      <% if !task.duedate.nil? %>
-        <% if (task.duedate - Time.zone.today).to_i <= 7 && 
-              (task.duedate - Time.zone.today).to_i >= 0 &&
-              !task.completion? %>
-          <%= render 'tasks/index', task: task, tab: "week"%>
+    <div class="row">
+      <div class="col-xs-6">
+        <h2>Due</h2>
+        <% @user_tasks.each do |task| %>
+          <% if !task.duedate.nil? %>
+            <% if (task.duedate - Time.zone.today).to_i <= 7 && 
+                  (task.duedate - Time.zone.today).to_i >= 0 &&
+                  !task.completion? %>
+              <%= render 'tasks/index', task: task, tab: "week"%>
+            <% end %>
+          <% end %>
         <% end %>
-      <% end %>
-    <% end %>
+      </div>
+      <div class="col-xs-6">
+        <h2>Completed</h2>
+        <% @user_tasks.each do |task| %>
+          <% if !task.duedate.nil? %>
+            <% if (task.duedate - Time.zone.today).to_i <= 7 && 
+                  (task.duedate - Time.zone.today).to_i >= 0 &&
+                  task.completion? %>
+              <%= render 'tasks/index', task: task, tab: "week"%>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
   
   <div id="all" class="tab-pane fade">
-    <% @user_tasks.each do |task| %>
-    <% if !task.completion? %>
-      <%= render 'tasks/index', task: task, tab: "all"%>
-      <% end %>
-    <% end %>
-  </div>
-  
-  <div id="completed" class="tab-pane fade">
-    <% @user_tasks.each do |task| %>
-      <% if task.completion? %>
-        <%= render 'tasks/index', task: task, tab: "completed"%>
-      <% end %>
-    <% end %>
+    <div class="row">
+      <div class="col-xs-6">
+        <h2>Due</h2>
+        <% @user_tasks.each do |task| %>
+          <% if !task.completion? %>
+            <%= render 'tasks/index', task: task, tab: "all"%>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="col-xs-6">
+        <h2>Completed</h2>
+        <% @user_tasks.each do |task| %>
+          <% if task.completion? %>
+            <%= render 'tasks/index', task: task, tab: "all"%>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
   
   <div id="overdue" class="tab-pane fade">
+    <h2>Overdue</h2>
     <% @user_tasks.each do |task| %>
       <% if !task.duedate.nil? %>
         <% if (task.duedate - Time.zone.today).to_i < 0 && !task.completion? %>
@@ -61,3 +98,4 @@
   </div>
   
 </div>
+

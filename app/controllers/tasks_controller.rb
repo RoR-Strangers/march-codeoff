@@ -4,8 +4,6 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.user = current_user
     @task.completion = :false
-    #needs to be changed to get user that is logged in
-    #@task.user = User.first  commented out while users not working
     if @task.save
       flash[:success] = "Task was successfully created"
       redirect_to user_path(@task.user)
