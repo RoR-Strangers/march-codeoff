@@ -35,7 +35,7 @@
           <%= f.label :timezone %>
         </div>
         <div class="col-sm-8">
-         <%= f.time_zone_select(:time_zone, ActiveSupport::TimeZone.all%>
+         <%= f.time_zone_select(:time_zone, ActiveSupport::TimeZone.all)%>
         </div>
       </div>
       
@@ -44,6 +44,6 @@
           <%= f.submit(@user.new_record? ? "Sign up" : "Update Account", class: 'btn btn-primary btn-lg') %>
         </div>
       </div>
-    <% end %>    
+    <% end %>
   </div>
 </div>
